@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import Todo from './Component/Todo'
+import TodoInput from './Component/TodoInput'
+import { validate } from '@babel/types';
 // import './App.css';
 
 function App() {
@@ -18,10 +20,19 @@ function App() {
     }
   ]);
 
+  // Removes an Item from List
   const removeTodo=index=>{
     const newTodos = [...todos];
     newTodos.splice(index, 1);
     setTodos(newTodos)
+  }
+
+  // Adds and Item to List
+  const addTodoItem=(e, text, setValue)=>{
+    e.preventDefault();
+    const newTodos=[...todos, {text}];
+    setTodos(newTodos)
+    setValue('')
   }
 
   return (
@@ -30,6 +41,7 @@ function App() {
         {todos.map((todo, index)=>(
           <Todo key={index} index={index} todo={todo} removeTodo={removeTodo}/>
         ))}
+        <TodoInput addTodoItem={addTodoItem}/>
       </div>
     </div>
   );

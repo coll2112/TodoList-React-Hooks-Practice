@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 function Todo({todo, index, removeTodo}){
     return(
-        <div key={index}>
+        <div>
             <p>{todo.text}</p>
-            <button onClick={()=>{removeTodo(index)}}>Remove Item</button>
+            <button onClick={()=>{removeTodo(index)}}>Remove</button>
         </div>
     )
 }
