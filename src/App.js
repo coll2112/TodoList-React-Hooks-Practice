@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Todo from './Component/Todo'
 // import './App.css';
 
 function App() {
@@ -17,11 +18,17 @@ function App() {
     }
   ]);
 
+  const removeTodo=index=>{
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos)
+  }
+
   return (
     <div className="App">
       <div>
         {todos.map((todo, index)=>(
-          <p key={index}>{todo.text}</p>
+          <Todo key={index} index={index} todo={todo} removeTodo={removeTodo}/>
         ))}
       </div>
     </div>
